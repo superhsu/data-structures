@@ -13,8 +13,24 @@ var Queue = function() {
 
 var queueMethods = {};
 
-queueMethods.push = function() {
-  
+queueMethods.enqueue = function(value) {
+  this.storage[this.enquePos] = value; 
+  this.count++;
+  this.enquePos++;
+};
+
+queueMethods.dequeue = function() {
+  if (this.count > 0) {
+    var temp = this.storage[this.dequePos];
+    delete this.storage[this.dequePos];
+    this.count--; 
+    this.dequePos++; 
+    return temp;
+  }
+};
+
+queueMethods.size = function() {
+  return this.count;
 };
 
 
