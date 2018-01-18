@@ -64,9 +64,9 @@ define([
 
       it('allows sequentially additing and removing items', function() {
         stack.push('a');
-        expect(stack.pop()).to.equal(undefined);
+        expect(stack.pop()).to.equal('a');
         stack.push('b');
-        expect(stack.pop()).to.equal(undefined);
+        expect(stack.pop()).to.equal('b');
       });
 
     });
@@ -75,7 +75,7 @@ define([
       it('removes the most recently added of two items', function() {
         stack.push('a');
         stack.push('b');
-        expect(stack.pop()).to.equal(undefined);
+        expect(stack.pop()).to.equal('b');
       });
 
       it('removes the newest item, after newer items have already been added and removed', function() {
@@ -83,7 +83,7 @@ define([
         stack.push('b');
         stack.push('c');
         stack.pop();
-        expect(stack.pop()).to.equal(undefined);
+        expect(stack.pop()).to.equal('b');
       });
     });
 
@@ -136,9 +136,9 @@ define([
 
       it('allows sequentially adding and removing items', function() {
         queue.enqueue('a');
-        expect(queue.dequeue()).to.equal(undefined);
+        expect(queue.dequeue()).to.equal('a');
         queue.enqueue('b');
-        expect(queue.dequeue()).to.equal(undefined);
+        expect(queue.dequeue()).to.equal('b');
       });
 
     });
@@ -147,7 +147,7 @@ define([
       it('removes the least recently added of two items', function() {
         queue.enqueue('a');
         queue.enqueue('b');
-        expect(queue.dequeue()).to.equal(undefined);
+        expect(queue.dequeue()).to.equal('a');
       });
 
       it('removes the oldest item, after newer items have already been added and removed', function() {
@@ -155,7 +155,7 @@ define([
         queue.enqueue('b');
         queue.dequeue();
         queue.enqueue('c');
-        expect(queue.dequeue()).to.equal(undefined);
+        expect(queue.dequeue()).to.equal('b');
       });
     });
 
