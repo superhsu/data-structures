@@ -2,49 +2,38 @@ var LinkedList = function() {
   var list = {};
   list.head = null;
   list.tail = null;
-  list.length = 0;
+  list.size = 0;
 
   list.addToTail = function(value) {
-
-    var newNode = Node(value);
-    
-    //check if list is empty, if it is, head = new node
+  var newNode = Node(value); 
     if (list.tail === null) {
       list.head = newNode;
-    } else { //if list isn't empty, set current tail.next to new node
+      list.tail = newNode; 
+    } else {
       list.tail.next = newNode;
+      list.tail = newNode; 
     }
-    list.tail = newNode; //
-    list.length++; //add to size b/c we are adding a new node to list
+    list.size++; 
   };
 
   list.removeHead = function() {
-    var formerHead = list.head.value;
+    var remove = list.head.value;
     list.head = list.head.next;
-    list.length--;
-    return formerHead;
+    list.size--;
+    return remove; 
   };
 
   list.contains = function(target) {
-    // var search = list.head;
-    // while(search !== null) {
-    //   if (search.value === target) {
-    //     return true;
-    //   } else {
-    //     search = search.next;
-    //   }
-    // }
-    // return false;
-    var current = list.head;
-    while(current !== null) {
-      if (current.value === target) {
-        return true;
-      } else {
-        current = current.next;
+    var search = list.head; 
+    while (search !== null) {
+      if (search.value === target) {
+        return true; 
       }
+      search = search.next;
     }
     return false;
   };
+
   return list;
 };
 
@@ -59,5 +48,7 @@ var Node = function(value) {
 
 /*
  * Complexity: What is the time complexity of the above functions?
-    removeHead - 
+ add o(1)
+ remove o(1)
+ contains o(n) 
  */
